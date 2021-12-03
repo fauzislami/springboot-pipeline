@@ -55,7 +55,7 @@ pipeline {
            steps {
                sh '''
                rm -rf $APP_MANIFEST_DIR
-               git config --global http http.sslVerify false
+               git config --global http.sslVerify false
                git clone $APP_MANIFEST_REPO
                cd $APP_MANIFEST_DIR
                sed -E -i -e 's%(islamifauzi/springtest:).*%\1'"${VERSION}"'%' springtest-deployment.yml
