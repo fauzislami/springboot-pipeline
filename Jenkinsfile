@@ -60,7 +60,7 @@ pipeline {
                git config --global http.sslVerify false
                git clone $APP_MANIFEST_REPO
                cd $APP_MANIFEST_DIR
-               sed -E -i -e 's%(islamifauzi/springtest:).*%\1'"${VERSION}"'%' springtest-deployment.yml
+               sed -i -e 's|islamifauzi/springtest:.*|islamifauzi/springtest:'"${VERSION}"'|g' springtest-deployment.yml
                git add .
                git commit -m "update version to $VERSION"
                git push https://${GIT_USERNAME}:${GIT_PASSWD}@github.com/fauzislami/argocd-springtest.git
