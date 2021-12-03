@@ -10,6 +10,10 @@ pipeline {
         APPLICATION_NAME = "springtest"
         VERSION = "1.1"
         DOCKER_CREDENTIAL_ID = "docker-creds-id"
+        APP_MANIFEST_DIR = "argocd-springtest"
+        APP_MANIFEST_REPO = "https://github.com/fauzislami/argocd-springtest.git"
+        GIT_USERNAME = "islamifauzi"
+        GIT_PASSWD = "git-passwd"
     }
 
     stages {
@@ -45,6 +49,21 @@ pipeline {
                      }
                 }
             }
+       }
+
+       stage('Modify manifest') {
+           steps {
+               sh '''
+               rm -rf $APP_MANIFEST_DIR
+               git config --global http http.sslVerify false
+               git clone $APP_MANIFEST_REPO
+               cd $APP_MANIFEST_DIR
+               sed -E -i -e 's%(islamifauzi/springtest:).*%\1'"${VERSION}"'%' springtest-deployment.yml
+               git add .
+               git commit -m "update version to $VERSION"
+               git push https://${GIT_USERNAME}:${GIT_PASSWD}@github.com/fauzislami/argocd-springtest.git
+               '''
+           }
        }
     }
 }
