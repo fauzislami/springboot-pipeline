@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh 'chmod +x testenv.sh'
                 sh './testenv.sh'
-                sh 'mvn clean compile'
+                sh 'mvn clean compile install'
             }
         }
 
