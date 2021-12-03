@@ -8,7 +8,7 @@ pipeline {
 
     environment {
         APPLICATION_NAME = "springtest"
-        VERSION = "1"
+        VERSION = "1.1"
         DOCKER_CREDENTIAL_ID = "docker-creds-id"
     }
 
