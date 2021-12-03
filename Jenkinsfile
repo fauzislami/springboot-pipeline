@@ -38,7 +38,7 @@ pipeline {
         stage('Build and Push Image ') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io', "$DOCKER_CREDENTIAL_ID") {
+                    docker.withRegistry('https://docker.io', "$DOCKER_CREDENTIAL_ID") {
                         def customImage = docker.build("islamifauzi/$APPLICATION_NAME:$VERSION")
                             customImage.push()
 
