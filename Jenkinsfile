@@ -13,7 +13,7 @@ pipeline {
         APP_MANIFEST_DIR = "argocd-springtest"
         APP_MANIFEST_REPO = "https://github.com/fauzislami/argocd-springtest.git"
         GIT_USERNAME = "islamifauzi"
-        GIT_PASSWD = "git-passwd"
+        GIT_PASSWD = credentials ('git-passwd')
     }
 
     stages {
@@ -65,6 +65,8 @@ pipeline {
                git commit -m "update version to $VERSION"
                git push https://${GIT_USERNAME}:${GIT_PASSWD}@github.com/fauzislami/argocd-springtest.git
                '''
+
+
            }
        }
     }
