@@ -55,6 +55,8 @@ pipeline {
            steps {
                sh '''
                rm -rf $APP_MANIFEST_DIR
+               git config --global user.email "islamifauzi@gmail.com"
+               git config --global user.name "islamifauzi"
                git config --global http.sslVerify false
                git clone $APP_MANIFEST_REPO
                cd $APP_MANIFEST_DIR
