@@ -15,6 +15,7 @@ pipeline {
     stages {
         stage('Building code') {
             steps {
+                sh 'chmod +x testenv.sh'
                 sh './testenv.sh'
                 sh 'mvn clean compile'
             }
