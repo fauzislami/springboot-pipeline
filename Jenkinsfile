@@ -8,7 +8,7 @@ pipeline {
 
     environment {
         APPLICATION_NAME = "springtest"
-        VERSION = "1.1"
+        VERSION = "1.10"
         DOCKER_CREDENTIAL_ID = "docker-creds-id"
         APP_MANIFEST_DIR = "argocd-springtest"
         APP_MANIFEST_REPO = "https://github.com/fauzislami/argocd-springtest.git"
